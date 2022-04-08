@@ -1,35 +1,23 @@
-# passport-boilerplate
+# Skillup / Skill Tree
 
 
-This is your passport boilerplate.
+This is an app for creating skill tree based educational classes or todo lists.  The idea is to gamify the experience.
 
-## Setup 
+## User stories 
 
-1. Clone the repo
-2. Rename the folder to your Project
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+1. Front page has an oauth login
+2. You first see the main skill tree page at the bottom is an edit skill tree view
+3. In the edit skill tree view is an option to type a new skill tree name hitting enter will create the name of the skill in a container, next to it is an "add new skill" button, trash can also
+4. clicking on that button will create a graph line down that connects to a place to enter a new skill name, hitting enter will generate the new skill name in a box. (css-grid for equal spacing? how to draw lines?) next to skill will be a trash can, and add new skill button, and an edit button clicking this will allow you to open a class page, this page can have instructions, links, or more info, as well as a prerequisite menu.
+5. If you click on the skill it will be marked as "done"
 
 
-#### Setup your git repo
-0. Setup your `.env` file and add all the things you need! (look at mongoose movies for reference!)
-1. in the project root `git init`
-2. `git add .` to add all the starter code
-3. `git commit -m "setup boilerplate"` 
-4. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-5. copy the remote address
-6. In your terminal add the remote `git remote add origin yourGithubRepo'sAddressGoesHere`
-7. `git pull origin master` If a screen pulls up asking you to do something just press `:q` and then `enter` (thats vim btw :) )
-8. `git push origin master`
+#### UI concept
+![behold!](/skillupflow.drawio.png)
 
-#### Setup your login
+#### DB Schema
 
-0. Setup your database connection string
-1. Then Setup Your User Model, 
-2. Follow the steps from the lesson plan to get your Google login credentials for your `.env` file (create the file if you haven't), or you can just copy the ones from earlier if you want to reuse them.
-3. Setup the Code in your config passport 
-4. Setup your callback routes in your `routes/index`
-5. Setup a view and test your login!
+![sweet and simple](/dbschema.png)
 
-#### Make a commit 
-
-```git commit -m "setup up oauth and User Model"```
+#### Trello Board
+Coming soon! :D
