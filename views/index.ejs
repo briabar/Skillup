@@ -1,0 +1,10 @@
+<%- include('partials/header') %> 
+    <h1>INDEX</h1>
+    <% if (user) { %>
+        <%- include('partials/treeview') %>
+    <% } else { %>
+        <h1>LOG IN PLZ</h1>
+    <% } %> 
+
+</body>
+</html>

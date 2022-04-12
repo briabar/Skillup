@@ -18,3 +18,9 @@
 .collection-item form {
   margin-top: -5px;
 }
+
+.login-btn {
+  width: 50px;
+  height: auto;
+  text-align: center;
+}
