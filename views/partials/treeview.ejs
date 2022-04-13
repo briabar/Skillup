@@ -1,1 +1,22 @@
 <h1>Tree view</h1>
+<% if(!nodes) { %> 
+<div class="Level-0" id="0">
+    <a href="/create"></a>
+</div>
+<% } else { %>
+    <section class="level-<%= currentLevel %>">
+    <% let currentLevel = 0; %> 
+    <% for(let i = 0; i < nodes.length; i++) { %>
+        <% if(nodes[i].level === currentLevel) { %> 
+        <div class="skill-box" >
+            <!-- skill stuff here -->
+        </div>
+        <% } else { %>
+    </section>
+    <div class="skill-box" >
+        <!-- skill stuff here -->
+    </div>
+    <section class="level-<%= currentLevel %>">
+        <% } %> 
+    <% } %>  
+<% } %> 

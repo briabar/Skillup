@@ -1,12 +1,10 @@
-var router = require('express').Router();
+const express = require('express');
+var router = express.Router();
 const passport = require('passport');
+const indexCtrl = require('../controllers/index')
 
 // The root route renders our only view
-router.get('/', function(req, res) {
-  res.render('../views/index', {
-    title : "PIZZA"
-  })
-});
+router.get('/', indexCtrl.renderIndex);
 
 // router.get('/skills', function(req, res) {
 //   res.render('../views/index')

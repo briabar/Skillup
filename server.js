@@ -3,6 +3,8 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 // session middleware
+const bodyParser = require('body-parser');
+const mongoSanitize = require('express-mongo-sanitize');
 const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
@@ -23,6 +25,8 @@ require('./config/passport');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));

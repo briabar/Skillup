@@ -1,0 +1,13 @@
+
+
+function renderIndex(req, res) {
+    console.log("HELLO")
+    res.render('./', {
+        'title' : "PIZZA",
+        'nodes' : null,
+    })
+}
+
+module.exports = {
+    renderIndex
+}
