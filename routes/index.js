@@ -6,10 +6,6 @@ const indexCtrl = require('../controllers/index')
 // The root route renders our only view
 router.get('/', indexCtrl.renderIndex);
 
-// router.get('/skills', function(req, res) {
-//   res.render('../views/index')
-// });
-
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
   'google',

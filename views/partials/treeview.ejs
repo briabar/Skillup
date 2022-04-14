@@ -1,22 +1,45 @@
 <h1>Tree view</h1>
 <% if(!nodes) { %> 
 <div class="Level-0" id="0">
-    <a href="/create"></a>
+    <form id="add-skill" method="POST" action="/skills/new">
+        <input type="text" name="content" class="new-skill-name">
+        <input type="hidden" name="belongsTo" value="-1">
+        <input type="hidden" name="level" value="0">
+        <input type="submit" value="Add Review">
+      </form>
 </div>
 <% } else { %>
-    <section class="level-<%= currentLevel %>">
-    <% let currentLevel = 0; %> 
-    <% for(let i = 0; i < nodes.length; i++) { %>
-        <% if(nodes[i].level === currentLevel) { %> 
-        <div class="skill-box" >
-            <!-- skill stuff here -->
-        </div>
-        <% } else { %>
-    </section>
-    <div class="skill-box" >
-        <!-- skill stuff here -->
-    </div>
-    <section class="level-<%= currentLevel %>">
-        <% } %> 
-    <% } %>  
+    <% 
+        let node;
+        let cue = [nodes[0]];
+        let seen = [];
+        let width = nodes[0].nextNodes.length;
+        let breadth = 0;
+        let pastLevel = nodes[0].level;
+        let pastBelongsTo = nodes[0].belongsTo;
+        while (cue.length > 0) {
+            node = cue.pop();
+            console.log(node, "IN THE VIEW!")
+            if ( node.belongsTo !== pastBelongsTo ) {
+                pastBelongsTo = node.belongsTo;
+                %>
+                <div class="branch-spacer"></div>
+                <%
+            }
+    %> 
+            <div>NODE <%= node._id %></div>
+    <%
+            if (pastLevel > node.level) {
+                %>
+                </div>
+                </br>
+                <div class="level-container" id="level-<%= node.level %>">
+                <%
+                pastLevel = node.level;
+            }
+            // for(let i =0; i < node.nextNodes.length; i++) {
+            //     cue.push(node.nextNodes[i]);
+            // }
+        }
+        %>  
 <% } %> 

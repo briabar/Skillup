@@ -4,8 +4,19 @@ const Schema = mongoose.Schema;
 
 const nodeSchema = new Schema({
     // user: userSchema.id,
+    skillName: {
+        type: String,
+    },
     level: {
         type: Number,
+    },
+    belongsTo: {
+        type: Number,
+        default: -1,
+    },
+    branchId: {
+        type: Number,
+        default: 0,
     },
     skillDetails : {
         type: String, //this needs to be sanitised... mongo-sanitize?

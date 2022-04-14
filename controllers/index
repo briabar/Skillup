@@ -1,11 +1,44 @@
-
+const User = require('../models/user');
+const Node = require('../models/tree');
+// function getNodes(req, res) {
+//     try {
+//         User.findOne({googleId: req.user.googleId}, function(err, foundUser) {
+//             if( err ) {
+//                 console.log(err, '< This err!');
+//                 return null
+//             }
+//             return foundUser.trees[0];
+//         });
+//     } catch {
+//         return null
+//     }
+    
+// }
 
 function renderIndex(req, res) {
-    console.log("HELLO")
-    res.render('./', {
-        'title' : "PIZZA",
-        'nodes' : null,
-    })
+    console.log(req.user)
+    try {
+        User.findOne({googleId: req.user.googleId}, function(err, foundUser) {
+            if( err ) {
+                console.log(err, '< This err!');
+                res.render('./', {
+                    'title' : "NOPE",
+                    'nodes' : null
+                })
+            } else {
+                console.log(foundUser, "THE TREEEEE");
+                res.render('./', {
+                    'title' : "PIZZA",
+                    'nodes' : foundUser.trees[0],
+                });
+            }
+        });
+    } catch {
+        res.render('./', {
+            'title' : "NOPE",
+            'nodes' : null
+        })
+    }
 }
 
 module.exports = {
