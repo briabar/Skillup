@@ -11,8 +11,7 @@ const nodeSchema = new Schema({
         type: Number,
     },
     belongsTo: {
-        type: Number,
-        default: -1,
+        type: Schema.Types.ObjectId,
     },
     branchId: {
         type: Number,
@@ -25,12 +24,10 @@ const nodeSchema = new Schema({
         type: Number,
         default: 0,
     },
-    nextNodes: {
-        type: [{type: Schema.Types.ObjectId, ref: 'Node'}],
+    nextNodes: [{type: Schema.Types.ObjectId, ref: 'Node', autopopulate: true}],
         //need to require that nodes referenced here be one level higher than next...maybe
         //Thinking more, maybe we don't need to care about the level of the node for linking purposes...
-    }
-
 });
+nodeSchema.plugin(require('mongoose-autopopulate'))
 
 module.exports = mongoose.model('Node', nodeSchema);

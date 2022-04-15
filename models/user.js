@@ -9,9 +9,10 @@ const userSchema = new Schema({
 	},
 	email: String,
 	avatar: String,
-    trees: [{type: Schema.Types.ObjectId, ref: 'Node'}], //these are root nodes
+    trees: [{type: Schema.Types.ObjectId, ref: 'Node', autopopulate: true}], //these are root nodes
   }, {
 	timestamps: true
   });
+userSchema.plugin(require('mongoose-autopopulate'))
 
 module.exports = mongoose.model('User', userSchema);

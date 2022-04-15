@@ -26,11 +26,16 @@ function renderIndex(req, res) {
                     'nodes' : null
                 })
             } else {
-                console.log(foundUser, "THE TREEEEE");
+                
+                console.log('#########################################')
+                console.log(foundUser.trees[0])
+                console.log('#########################################')
+
                 res.render('./', {
                     'title' : "PIZZA",
                     'nodes' : foundUser.trees[0],
                 });
+            
             }
         });
     } catch {

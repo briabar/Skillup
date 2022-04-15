@@ -1,8 +1,9 @@
 <h1>Tree view</h1>
 <% if(!nodes) { %> 
 <div class="Level-0" id="0">
+    <br>
     <form id="add-skill" method="POST" action="/skills/new">
-        <input type="text" name="content" class="new-skill-name">
+        <input type="text" name="skillName" class="new-skill-name">
         <input type="hidden" name="belongsTo" value="-1">
         <input type="hidden" name="level" value="0">
         <input type="submit" value="Add Review">
@@ -11,35 +12,44 @@
 <% } else { %>
     <% 
         let node;
-        let cue = [nodes[0]];
+        let cue = [nodes];
         let seen = [];
-        let width = nodes[0].nextNodes.length;
+        let width = nodes.nextNodes.length;
         let breadth = 0;
-        let pastLevel = nodes[0].level;
-        let pastBelongsTo = nodes[0].belongsTo;
+        let pastLevel = nodes.level;
+        let pastBelongsTo = nodes.belongsTo;
+        let fromNode = "none";
         while (cue.length > 0) {
             node = cue.pop();
-            console.log(node, "IN THE VIEW!")
+            console.log(node.skillName);
             if ( node.belongsTo !== pastBelongsTo ) {
                 pastBelongsTo = node.belongsTo;
                 %>
                 <div class="branch-spacer"></div>
                 <%
             }
-    %> 
-            <div>NODE <%= node._id %></div>
-    <%
-            if (pastLevel > node.level) {
+
+            if (pastLevel < node.level || node.level === 0) {
                 %>
                 </div>
-                </br>
+                <br>
                 <div class="level-container" id="level-<%= node.level %>">
                 <%
                 pastLevel = node.level;
             }
-            // for(let i =0; i < node.nextNodes.length; i++) {
-            //     cue.push(node.nextNodes[i]);
-            // }
+    %> 
+            <div class="skill-node" data-nodeID="<%= node._id %>"  data-fromNode="<%= node.belongsTo %>"><%= node.skillName %>
+            <form id="add-skill" method="POST" action="/skills/new/<%= node._id %>">
+                <input type="text" name="skillName" class="new-skill-name">
+                <input type="hidden" name="belongsTo" value="<%= node._id %>">
+                <input type="hidden" name="level" value="<%= node.level + 1 %>">
+                <input type="submit" value="Add Review">
+            </form></div>
+    <%
+            
+            for(let i =0; i < node.nextNodes.length; i++) {
+                cue.unshift(node.nextNodes[i]);
+            }
         }
         %>  
 <% } %> 

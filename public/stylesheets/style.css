@@ -1,3 +1,10 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .brand-logo {
   margin-left: 15px;
 }
@@ -23,4 +30,25 @@
   width: 50px;
   height: auto;
   text-align: center;
+}
+
+.level-container {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: flex-end;
+  height: 11%;
+}
+
+line {
+  stroke:rgb(255,0,0);
+  stroke-width:2
+}
+
+svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
