@@ -4,9 +4,9 @@ const Node = require('../models/tree');
 
 function newRootNode(req, res) {
     Node.create({
+        user: req.user,
         skillName : req.body.skillName,
         level : 0,
-        // belongsTo: -1,
         branchID: 0,
         skillDetails: "",
         prereq: 0,
@@ -62,6 +62,12 @@ function newNode(req, res) {
 
 function deleteNode(req, res) {
     Node.findById(req.params.id, function(err, foundNode) {
+        // if(foundNode.user !== req.user) {
+        //     console.log('user mismatch');
+        //     console.log(foundNode.user, req.user)
+        //     return res.redirect('/');
+
+        // }
         if(err) {
             console.log(err, '< this err');
             return res.redirect('/');

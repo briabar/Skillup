@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const nodeSchema = new Schema({
-    // user: userSchema.id,
+    user: {type: Schema.Types.ObjectId, ref: 'userSchema'},
     skillName: {
         type: String,
     },
@@ -29,5 +29,7 @@ const nodeSchema = new Schema({
         //Thinking more, maybe we don't need to care about the level of the node for linking purposes...
 });
 nodeSchema.plugin(require('mongoose-autopopulate'))
+
+
 
 module.exports = mongoose.model('Node', nodeSchema);
