@@ -12,7 +12,7 @@ This is an app for creating skill tree based educational classes or todo lists. 
 5. If you click on the skill it will be marked as "done"
 
 
-### Link
+### Getting Started
 [Click here](https://sei37skillup.herokuapp.com/)
 
 #### UI concept
