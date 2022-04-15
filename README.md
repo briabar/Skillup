@@ -12,20 +12,20 @@ This is an app for creating skill tree based educational classes or todo lists. 
 5. If you click on the skill it will be marked as "done"
 
 
-### Getting Started
+## Getting Started
 [Click here](https://sei37skillup.herokuapp.com/)
 
-#### UI concept
+## UI concept
 ![behold!](/skillupflow.drawio.png)
 
-#### DB Schema
+## DB Schema
 
 ![sweet and simple](/dbschema.png)
 
-#### Trello Board
+## Trello Board
 [Trello Board](https://trello.com/b/XgiqpoEf/skillup)
 
-### Technologies used
+## Technologies used
 
 Javascript
 expressJS
@@ -34,7 +34,7 @@ HTML/CSS
 Node
 breadth first searching
 
-### next steps
+## next steps
 
 Break trees model out of user model and set up multiple tree functionality
 
