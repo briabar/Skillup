@@ -24,3 +24,20 @@ This is an app for creating skill tree based educational classes or todo lists. 
 
 #### Trello Board
 [Trello Board](https://trello.com/b/XgiqpoEf/skillup)
+
+### Technologies used
+
+Javascript
+expressJS
+Mongoose/mongodb
+HTML/CSS
+Node
+breadth first searching
+
+### next steps
+
+Break trees model out of user model and set up multiple tree functionality
+
+Improve style
+
+Make diagram lines dynamicly follow skillNodes
