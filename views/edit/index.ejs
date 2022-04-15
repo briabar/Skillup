@@ -1,0 +1,16 @@
+<%- include('../partials/header') %> 
+
+<h1>Edit a skill</h1>
+<% if (user) { %>
+
+    <form id="edit-skill" method="POST" action="/skills/edit/<%= node._id %>?_method=PUT">
+      <label>Skill details:</label><br>
+      <input type="text" name="skillName" value="<%= node.skillName %>"><br>
+      <textarea name="skillDetails"></textarea><br>
+      <input type="submit" value="Update Skill">
+    </form>
+
+    <% } %>
+
+</body>
+</html>

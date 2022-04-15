@@ -22,17 +22,12 @@ function renderIndex(req, res) {
             if( err ) {
                 console.log(err, '< This err!');
                 res.render('./', {
-                    'title' : "NOPE",
+                    'title' : "SKILL UP!",
                     'nodes' : null
                 })
             } else {
-                
-                console.log('#########################################')
-                console.log(foundUser.trees[0])
-                console.log('#########################################')
-
                 res.render('./', {
-                    'title' : "PIZZA",
+                    'title' : "SKILL UP!",
                     'nodes' : foundUser.trees[0],
                 });
             
@@ -40,7 +35,7 @@ function renderIndex(req, res) {
         });
     } catch {
         res.render('./', {
-            'title' : "NOPE",
+            'title' : "SKILL UP!",
             'nodes' : null
         })
     }

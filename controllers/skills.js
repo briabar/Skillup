@@ -3,8 +3,6 @@ const Node = require('../models/tree');
 
 
 function newRootNode(req, res) {
-    console.log("WORKY WORKY");
-    console.log(req.body)
     Node.create({
         skillName : req.body.skillName,
         level : 0,
@@ -23,7 +21,6 @@ function newRootNode(req, res) {
                 console.log(err, '< Node.create, err 2')
                 return res.redirect('/');
             }
-            console.log(foundUser.trees, "Should work...")
             foundUser.trees.push(newNode)
             // foundUser.
             foundUser.save()
@@ -63,7 +60,65 @@ function newNode(req, res) {
     })
 }
 
+function deleteNode(req, res) {
+    Node.findById(req.params.id, function(err, foundNode) {
+        if(err) {
+            console.log(err, '< this err');
+            return res.redirect('/');
+        }
+        foundNode.remove(function(err){
+			if(err) {
+            console.log(err, 'this err');
+			return res.redirect(`/`);
+            }
+		})
+        foundNode.save(function(err){
+			if(err) {
+            console.log(err, 'this err');
+			return res.redirect(`/`);
+            }
+		})
+
+    });
+}
+
+function editPage(req, res) {
+    Node.findById(req.params.id, function(err, foundNode) {
+        if(err) {
+            console.log(err, '< this err');
+            return res.redirect('/');
+        }
+        res.render('./edit/', {
+            'title' : "SKILL UP!",
+            'node' : foundNode});
+    });
+    
+}
+
+function updateNode(req, res) {
+    console.log('updateNode()')
+    Node.findByIdAndUpdate(req.params.id, {
+        skillName: req.body.skillName,
+        skillDetails: req.body.skillDetails,
+    }, function(err, updatedNode) {
+        if(err) {
+            console.log(err, '< this err');
+            return res.redirect('/')
+        }
+        updatedNode.save(function(err) {
+            if(err) {
+                console.log(err, '< this err');
+                return res.redirect('/')
+            }
+            return res.redirect('/');
+        })
+    })
+}
+
 module.exports = {
     newRootNode,
-    newNode
+    newNode,
+    deleteNode,
+    editPage,
+    updateNode,
 }

@@ -1,4 +1,3 @@
-<h1>Tree view</h1>
 <% if(!nodes) { %> 
 <div class="Level-0" id="0">
     <br>
@@ -6,7 +5,7 @@
         <input type="text" name="skillName" class="new-skill-name">
         <input type="hidden" name="belongsTo" value="-1">
         <input type="hidden" name="level" value="0">
-        <input type="submit" value="Add Review">
+        <input type="submit" value="+">
       </form>
 </div>
 <% } else { %>
@@ -21,34 +20,44 @@
         let fromNode = "none";
         while (cue.length > 0) {
             node = cue.pop();
-            console.log(node.skillName);
-            if ( node.belongsTo !== pastBelongsTo ) {
-                pastBelongsTo = node.belongsTo;
+            if ( node === "SPACE" ) {
                 %>
                 <div class="branch-spacer"></div>
                 <%
             }
-
-            if (pastLevel < node.level || node.level === 0) {
-                %>
+            else {
+                if (pastLevel < node.level || node.level === 0) {
+                    %>
+                    </div>
+                    <br>
+                    <div class="level-container" id="level-<%= node.level %>">
+                    <%
+                    pastLevel = node.level;
+                }
+        %> 
+                <div class="skill-node" data-nodeID="<%= node._id %>"  data-fromNode="<%= node.belongsTo %>"><%= node.skillName %>
+                <form id="add-skill" method="POST" action="/skills/new/<%= node._id %>">
+                    <input type="text" name="skillName" class="new-skill-name">
+                    <input type="hidden" name="belongsTo" value="<%= node._id %>">
+                    <input type="hidden" name="level" value="<%= node.level + 1 %>">
+                    <input type="submit" value="+">
+                </form>
+                <form class="inline" id="delete-but" method="POST" action="/skills/<%= node._id %>?_method=DELETE">
+                    <input type="submit" value="X">
+                </form>
+                <form class="inline" method="POST" action="/skills/edit/<%= node._id %>">
+                    <button type="submit">edt</button>
+                </form>
+                </form>
                 </div>
-                <br>
-                <div class="level-container" id="level-<%= node.level %>">
-                <%
-                pastLevel = node.level;
-            }
-    %> 
-            <div class="skill-node" data-nodeID="<%= node._id %>"  data-fromNode="<%= node.belongsTo %>"><%= node.skillName %>
-            <form id="add-skill" method="POST" action="/skills/new/<%= node._id %>">
-                <input type="text" name="skillName" class="new-skill-name">
-                <input type="hidden" name="belongsTo" value="<%= node._id %>">
-                <input type="hidden" name="level" value="<%= node.level + 1 %>">
-                <input type="submit" value="Add Review">
-            </form></div>
-    <%
-            
-            for(let i =0; i < node.nextNodes.length; i++) {
-                cue.unshift(node.nextNodes[i]);
+        <%
+                
+                for(let i = 0; i < node.nextNodes.length; i++) {
+                    if (i==0) {
+                        cue.unshift("SPACE")
+                    }
+                    cue.unshift(node.nextNodes[i]);
+                }
             }
         }
         %>  

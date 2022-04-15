@@ -64,8 +64,8 @@ for(let i = 0; i < skillNodes.length; i++) {
             borderDiv.style.top = `${curRect.top + curNode.offsetHeight}px`;
 
             bottomBorderDiv.style.width = `${Math.abs(compRect.left - curRect.left)}px`;
-            bottomBorderDiv.style.height = `${(compRect.top - curRect.top)/3}px`;
-            bottomBorderDiv.style.top = `${curRect.top + curNode.offsetHeight + (curNode.offsetHeight/2) + 3}px`;
+            bottomBorderDiv.style.height = `${(compRect.top - curRect.top)/3 - 19}px`;
+            bottomBorderDiv.style.top = `${curRect.top + curNode.offsetHeight + 23}px`;
            
             if(( compRect.left - curRect.left) < 0 ) {
                 //comparison node is left of current node

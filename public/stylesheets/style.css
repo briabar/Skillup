@@ -38,6 +38,7 @@ html, body {
   display: flex;
   align-items: flex-end;
   height: 11%;
+  margin-top: 6px;
 }
 
 line {
@@ -51,4 +52,16 @@ svg {
   height: 100%;
   top: 0;
   left: 0;
+}
+
+.skill-node {
+  margin: 7px;
+}
+
+.branch-spacer {
+  width: 100px;
+}
+
+.inline {
+  display: inline-block;
 }
